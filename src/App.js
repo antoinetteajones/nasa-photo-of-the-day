@@ -11,17 +11,17 @@ function App() {
       .get("https://api.nasa.gov/planetary/apod?api_key=jDATz69RXFCLBLEe20yp53vmHZICHAl4luaM5bZB")
       .then(response => {
         console.log(response.data);
-        const pic = response.data;
+        
         console.log(pic);
-        setPics(pic)
+        setPics(response.data)
       })
       .catch(error => {
         console.log("ERROR:", error)
       });
-  }, []);
+  },[]);
   return (
     <div className="App">
-      <NasaCard
+      <NasaCard key = {pic.id}
         title={pic.title}
         date={pic.date}
         img={pic.url}
